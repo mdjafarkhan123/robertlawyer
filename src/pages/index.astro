@@ -1,0 +1,188 @@
+---
+import { Image } from "astro:assets";
+import Button from "../components/Button.astro";
+import underTheFold from "../styles/pages/home/home.scss?url";
+import splideCssUrl from "@splidejs/splide/css?url";
+import Layout from "../layout/Layout.astro";
+import { Picture } from "astro:assets";
+import robertImg from "../assets/images/robert.avif";
+import aboutOneImg from "../assets/images/about-one.avif";
+import aboutTwoImg from "../assets/images/about-two.avif";
+import aboutThreeImg from "../assets/images/about-three.avif";
+import serviceOneImg from "../assets/images/service-one.avif";
+import serviceTwoImg from "../assets/images/service-two.avif";
+import serviceThreeImg from "../assets/images/service-three.avif";
+import whyChooseOneImg from "../assets/images/robert-speaking.avif";
+import whyChooseTwoImg from "../assets/images/why-us-two.avif";
+import whyChooseThreeImg from "../assets/images/why-us-three.avif";
+import processImg from "../assets/images/process.avif";
+import caseOneImg from "../assets/images/case-study-one.avif";
+import userOneImg from "../assets/images/user1.avif";
+import userOneFeaturedImg from "../assets/images/user1big.avif";
+import faqImg from "../assets/images/faq.avif";
+import contactImg from "../assets/images/getInTouch.avif";
+
+import CertificateSvg from "../assets/images/certificate.svg";
+import ConsultationSvg from "../assets/images/consultation.svg";
+import ExperienceOneSvg from "../assets/images/experience-one.svg";
+import JusticeSvg from "../assets/images/legal-actions.svg";
+import CertifiedeSvg from "../assets/images/qualification.svg";
+import RecoverySvg from "../assets/images/Recover.svg";
+import ReviewSvg from "../assets/images/review.svg";
+import ProjectCompleteSvg from "../assets/images/task-complete.svg";
+
+const stats = [
+    {
+        value: 10,
+        suffix: "+",
+        description: "Years of experience",
+        icon: "experience-one",
+    },
+    {
+        value: 95,
+        suffix: "%",
+        description: "Success rate",
+        icon: "experience-two",
+    },
+    {
+        value: 250,
+        suffix: "+",
+        description: "Cases completed",
+        icon: "case-complete",
+    },
+    {
+        value: 100,
+        suffix: "%",
+        description: "SRA regulated",
+        icon: "qualification-icon",
+    },
+];
+
+const services = [
+    {
+        title: "Legal representation",
+        description:
+            "Professional advocacy designed to protect your interests throughout the legal process.",
+        thumbnail: serviceOneImg,
+    },
+    {
+        title: "Personal injury claims",
+        description:
+            "Dedicated representation focused on protecting your rights and pursuing fair compensation.",
+        thumbnail: serviceTwoImg,
+    },
+    {
+        title: "Family legal matters",
+        description:
+            "Supportive and practical legal assistance for sensitive family-related issues.",
+        thumbnail: serviceThreeImg,
+    },
+];
+
+const whyChoose = [
+    {
+        title: "Client focused appraoch",
+        description:
+            "Every case is handled with personal attention, clear communication, and respect for your concerns.",
+        icon: "client-focused",
+    },
+    {
+        title: "Clear & honest guidance",
+        description:
+            "You receive straightforward legal advice without confusion, hidden details, or unnecessary complexity.",
+        icon: "guidance-icon",
+    },
+    {
+        title: "Responsive communication",
+        description:
+            "Questions are answered promptly, and you’re kept informed at every stage of your case.",
+        icon: "communication-icon",
+    },
+    {
+        title: "Trusted professional",
+        description:
+            "Your rights and interests are protected with care, diligence, and professional integrity.",
+        icon: "communication-icon",
+    },
+];
+
+const process = [
+    {
+        title: "Initial consultation",
+        description:
+            "Discuss your situation, concerns, and legal goals in a confidential setting.",
+        icon: "consultation-icon",
+    },
+    {
+        title: "Case review",
+        description:
+            "Your case is carefully reviewed to identify risks, options, and the best strategy ",
+        icon: "review-icon",
+    },
+    {
+        title: "Legal action",
+        description:
+            "A clear practical plan is developed based on your specific circumstances",
+        icon: "legal-actions",
+    },
+    {
+        title: "Resolution",
+        description:
+            "Focused efforts to achieve the best possible outcome for your case",
+        icon: "recover-icon",
+    },
+];
+
+const caseStudies = [];
+const testimonials = [];
+const faq = [];
+---
+
+<Layout>
+    <section id="hero" class="hero">
+        <div class="hero__wrapper container">
+            <div class="hero__media">
+                <Image
+                    widths={[480, 592]}
+                    src={robertImg}
+                    alt="Robert the lawyer"
+                    sizes="(max-width: 768px) 480px, 592px"
+                    loading="eager"
+                    fetchpriority="high"
+                />
+            </div>
+            <div class="hero__content">
+                <div class="badge">
+                    <span class="icon">
+                        <svg class="icon">
+                            <use xlink:href="/abovethefold.svg#auction-fill"
+                            ></use>
+                        </svg>
+                    </span>
+                    <div class="text">SRA Regulated: 01993456</div>
+                </div>
+                <h2 class="hero__heading">
+                    Your trusted partner for legal solutions
+                </h2>
+                <p class="hero__description">
+                    Expert legal guidance for your personal and business needs.
+                    Let's build your strongest case together
+                </p>
+                <Button title="start your case" type="secondary" />
+            </div>
+            <div class="hero__stats stats">
+                <div class="stats__item">
+                    <div class="stats__item-top">
+                        <div class="stats__item-icon"></div>
+                        <div class="stats__item-value"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <Fragment slot="bottom-style">
+        <link rel="stylesheet" href={underTheFold} />
+        <link rel="stylesheet" href={splideCssUrl} />
+    </Fragment>
+</Layout>

@@ -1,0 +1,64 @@
+---
+import Button from "./Button.astro";
+import Logo from "../assets/images/Robert.svg";
+---
+
+<header id="header" class="header">
+    <div class="header__container container">
+        <nav class="header__nav" aria-label="Main navigation">
+            <button
+                class="header__menu-toggler"
+                aria-label="Toggle menu"
+                aria-expanded="false"
+                aria-controls="main-navigation"
+            >
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+            <a href="/" class="header__logo" aria-label="Home">
+                <img
+                    src={Logo.src}
+                    alt="Robert. Lawyer"
+                    width="100"
+                    height="80"
+                    loading="eager"
+                    decoding="async"
+                />
+            </a>
+            <ul class="header__menu" id="main-navigation">
+                <li class="header__menu-item">
+                    <a href="#about" class="header__menu-link">Home</a>
+                </li>
+                <li class="header__menu-item">
+                    <a href="#about" class="header__menu-link">About</a>
+                </li>
+                <li class="header__menu-item">
+                    <a href="#service" class="header__menu-link">Services</a>
+                </li>
+                <li class="header__menu-item">
+                    <a href="#testimonial" class="header__menu-link"
+                        >Testimonial</a
+                    >
+                </li>
+                <li class="header__menu-item">
+                    <a href="#testimonial" class="header__menu-link"
+                        >Locations</a
+                    >
+                </li>
+            </ul>
+            <a
+                id="header__cta-mobile"
+                href="#"
+                class="header__cta header__cta--mobile"
+            >
+                Get a quote
+            </a>
+            <Button
+                id="header__cta-desktop"
+                type="primary header__cta--desktop"
+                title="Get a free quote"
+            />
+        </nav>
+    </div>
+</header>

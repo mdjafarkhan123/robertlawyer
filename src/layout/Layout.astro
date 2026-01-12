@@ -1,0 +1,106 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import utfFooterCss from "../styles/pages/footer/footer.scss?url";
+import baseStyle from "../styles/globals/base.scss?url";
+import criticalCss from "../styles/critical.css?raw";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta
+            name="description"
+            content="A modern roofing services website demo designed and developed by Roofix. Built with performance, SEO, and conversion-focused UX in mind"
+        />
+        <meta name="author" content="Roofix" />
+        <meta
+            name="keywords"
+            content="lawyer website, lawyer web design, contractor website, lawyer demo website, website design and development"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:title"
+            content="Roofing Services Website — Design & Development Demo"
+        />
+        <meta
+            property="og:description"
+            content="A high-performance roofing website demo built with modern UI, SEO best practices, and conversion-focused layouts."
+        />
+        <meta property="og:image" content="/og/roofing-demo.jpg" />
+        <meta property="og:url" content="https://your-demo-url.com" />
+        <meta property="og:site_name" content="Roofix" />
+        <link rel="canonical" href="https://your-demo-url.com/" />
+
+        <!-- Favicon -->
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+        <!-- Font Preloading -->
+        <link
+            rel="preload"
+            href="/src/assets/fonts/suranna-v15-latin-regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <link
+            rel="preload"
+            href="/src/assets/fonts/inter-v20-latin-regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+
+        <title>Roofix - Roofing service website</title>
+        <style is:inline set:html={criticalCss}></style>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Robert, Lawyer",
+                "url": "https://your-demo-url.com",
+                "author": {
+                    "@type": "Person",
+                    "name": "Jafar"
+                },
+                "description": "Demo roofing services website designed and developed for performance and conversions."
+            }
+        </script>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <slot />
+        </main>
+        <Footer />
+
+        <!-- Deferred Non-Critical CSS -->
+        <link
+            rel="stylesheet"
+            href={baseStyle}
+            media="print"
+            onload="this.media='all'"
+        />
+        <slot name="bottom-style" />
+        <link
+            rel="stylesheet"
+            href={utfFooterCss}
+            media="print"
+            onload="this.media='all'"
+        />
+
+        <!-- Fallback for users with JavaScript disabled -->
+        <noscript>
+            <link rel="stylesheet" href={baseStyle} />
+            <link rel="stylesheet" href={utfFooterCss} />
+        </noscript>
+
+        <!-- Scripts -->
+        <script src="../code/code.js"></script>
+    </body>
+</html>

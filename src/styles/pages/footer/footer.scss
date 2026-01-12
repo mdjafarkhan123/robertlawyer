@@ -1,0 +1,164 @@
+@use "../../utils" as *;
+.footer {
+    background-color: var(--color-primary);
+    padding-top: var(--space-fluid-2xl);
+    overflow: hidden;
+
+    &__social {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5px;
+        &-item {
+            background-color: var(--color-accent);
+            border-radius: 50px;
+            list-style: none;
+            transition: var(--transition);
+            &:hover {
+                transform: rotate(180deg);
+            }
+        }
+        &-link {
+            display: inline-flex;
+            color: var(--color-white);
+            text-decoration: none;
+            line-height: 0;
+            padding: 8px;
+            svg {
+                width: 20px;
+            }
+        }
+    }
+    &__wrapper {
+        overflow: hidden;
+        gap: var(--space-fluid-lg);
+    }
+    &-cta {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+
+        &__heading {
+            color: var(--color-heading-white);
+        }
+        &__content {
+            display: flex;
+            flex-direction: column;
+            color: var(--color-text-white);
+            gap: var(--space-sm);
+        }
+    }
+    &__logo {
+        font-weight: 800;
+        font-size: clamp(10rem, -1.365rem + 31.138vw, 36rem);
+        line-height: 0.8;
+        white-space: nowrap;
+        background: linear-gradient(
+            177deg,
+            rgb(255 255 255) 9%,
+            rgb(255 255 255 / 9%) 100%
+        );
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+    &-main {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        color: var(--text-white);
+        border-bottom: 1px solid var(--color-border-light);
+        padding-bottom: var(--space-fluid-lg);
+        gap: var(--space-fluid-lg);
+        &__introduction {
+            display: flex;
+            max-width: min(392px, 100%);
+            width: 100%;
+            color: var(--color-text-white);
+            flex-flow: column;
+            gap: var(--space-xsm);
+        }
+
+        &__nav {
+            width: fit-content;
+            color: var(--color-text-white);
+            &-title {
+                color: var(--color-heading-white);
+                margin-bottom: var(--space-xsm);
+                white-space: nowrap;
+            }
+            &-list {
+                display: flex;
+                flex-flow: column;
+                gap: var(--space-3xsm);
+                a {
+                    color: var(--color-text-white);
+                    text-decoration: none;
+                }
+            }
+        }
+        &__quick-links {
+            width: fit-content;
+            color: var(--color-text-white);
+            .quick-links__title {
+                color: var(--color-heading-white);
+                margin-bottom: var(--space-xsm);
+            }
+        }
+        &__contact {
+            width: fit-content;
+            color: var(--color-text-white);
+            &-title {
+                color: var(--color-heading-white);
+                margin-bottom: var(--space-xsm);
+            }
+            &-list {
+                display: flex;
+                flex-flow: column;
+                gap: var(--space-3xsm);
+            }
+            a {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                gap: var(--space-xsm);
+            }
+        }
+    }
+    &-copyright {
+        text-align: center;
+        color: var(--color-text-white);
+        padding-bottom: var(--space-fluid-lg);
+    }
+}
+
+@include respond-to("tablet") {
+    .footer {
+        & &__wrapper {
+            overflow: visible;
+        }
+        &-cta {
+            flex-direction: row;
+            justify-content: space-between;
+            gap: var(--space-fluid-lg);
+            &__heading-wrapper {
+                max-width: 410px;
+            }
+            &__content {
+                max-width: 450px;
+            }
+        }
+
+        &-main__description {
+            font-size: var(--fs-md);
+            font-weight: 500;
+        }
+
+        &-main__nav-title,
+        &-main__contact-title,
+        .quick-links__title {
+            font-size: var(--fs-xl);
+        }
+    }
+}

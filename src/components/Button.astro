@@ -1,4 +1,5 @@
 ---
+import Icon from "./Svg.astro";
 const { title, type, id } = Astro.props;
 ---
 
@@ -11,9 +12,7 @@ const { title, type, id } = Astro.props;
 >
     <span class="btn__text text">{title}</span>
     <span class="btn__icon" aria-hidden="true">
-        <svg class="icon" width="24" height="24">
-            <use href="/abovethefold.svg#arrow-button"></use>
-        </svg>
+        <Icon name="arrow-button" src="abovethefold" />
     </span>
     <span class="btn__bg"></span>
 </a>

@@ -21,17 +21,17 @@ import userOneImg from "../assets/images/user1.avif";
 import userOneFeaturedImg from "../assets/images/user1big.avif";
 import faqImg from "../assets/images/faq.avif";
 import contactImg from "../assets/images/getInTouch.avif";
+import quoteImg from "../assets/images/quote.avif";
 
-import CertificateSvg from "../assets/images/certificate.svg";
-import CertifiedeSvg from "../assets/images/qualification.svg";
-import ProjectCompleteSvg from "../assets/images/task-complete.svg";
+import SliderController from "../components/SliderController.astro";
+import Icon from "../components/Svg.astro";
 
 const stats = [
     {
         value: 10,
         suffix: "+",
         description: "Years of experience",
-        icon: "experience-one",
+        icon: "xp-icon",
     },
     {
         value: 95,
@@ -131,21 +131,27 @@ const process = [
 const caseStudies = [
     {
         date: "21 september 2025",
+        category: "Personal law injury",
         title: "Successful personal injury claim injury resolution",
         description:
             "The client was involved in a personal injury incident that resulted in medical expenses, lost income, and ongoing physical discomfort. They sought legal representation to understand their rights and pursue fair compensation.",
+        thumbnail: caseOneImg,
     },
     {
         date: "17 August 2024",
+        category: "Personal law injury",
         title: "Comprehensive workplace liability settlement",
         description:
             "After a construction site accident caused by faulty equipment, the client faced significant rehabilitation costs. We successfully navigated the complexities of labor laws to hold the negligent parties accountable and secured a settlement covering all future care.",
+        thumbnail: caseOneImg,
     },
     {
         date: "05 January 2026",
+        category: "Personal law injury",
         title: "Strategic defense in multi-vehicle collision",
         description:
             "Our client was wrongfully blamed for a major highway accident. Through meticulous investigation and expert testimony, we cleared their name and successfully counter-sued for the full repair costs and emotional distress suffered during the trial.",
+        thumbnail: caseOneImg,
     },
 ];
 
@@ -217,33 +223,529 @@ const faq = [
             <div class="hero__content">
                 <div class="badge">
                     <span class="icon">
-                        <svg class="icon">
-                            <use xlink:href="/abovethefold.svg#auction-fill"
-                            ></use>
-                        </svg>
+                        <Icon name="auction-fill" src="abovethefold" />
                     </span>
                     <div class="text">SRA Regulated: 01993456</div>
                 </div>
-                <h2 class="hero__heading">
-                    Your trusted partner for legal solutions
-                </h2>
+                <h1 class="hero__heading">
+                    Your trusted partner for Legal solutions
+                </h1>
                 <p class="hero__description">
                     Expert legal guidance for your personal and business needs.
-                    Let's build your strongest case together
+                    Let's build your strongest case together.
                 </p>
                 <Button title="start your case" type="secondary" />
             </div>
             <div class="hero__stats stats">
-                <div class="stats__item">
-                    <div class="stats__item-top">
-                        <div class="stats__item-icon"></div>
-                        <div class="stats__item-value"></div>
-                    </div>
-                </div>
+                {
+                    stats.map((item) => (
+                        <div class="stats__item">
+                            <div class="stats__header">
+                                <div class="stats__icon">
+                                    <Icon name={item.icon} src="abovethefold" />
+                                </div>
+                                <div class="stats__value">
+                                    <span class="number">{item.value}</span>
+                                    <span class="suffix">{item.suffix}</span>
+                                </div>
+                            </div>
+                            <div class="stats__body">{item.description}</div>
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </section>
+    <section id="about" class="about">
+        <div class="about__wrapper container">
+            <div class="about__content">
+                <div class="badge">about robert</div>
+                <h2 class="about__heading">
+                    Robert <span class="img">
+                        <Image
+                            src={aboutOneImg}
+                            alt="Robert speaking"
+                            width="90"
+                            height="44"
+                        />
+                    </span>
+                    is a dedicated personal attorney focused on protecting his clients
+                    rights
+                    <span class="img">
+                        <Image
+                            src={aboutTwoImg}
+                            alt="Judgement"
+                            width="86"
+                            height="44"
+                        />
+                    </span> with clear results-driven <span class="img"
+                        ><Image
+                            src={aboutThreeImg}
+                            alt="Robert working"
+                            width="86"
+                            height="54"
+                        /></span
+                    >
+                </h2>
+                <p class="about__description">
+                    Every case is handled with care, attention, and a strong
+                    sense of responsibility. Robert believes informed clients
+                    make better decisions, which is why clarity and honesty
+                    guide his work.
+                </p>
+            </div>
+            <div class="about__cta">
+                <Button type="primary" title="Start your case" />
+                <Button type="secondary" title="Get a free quote" />
+            </div>
+        </div>
+    </section>
+    <section id="services" class="services">
+        <div class="services__wrapper container">
+            <div class="services__header">
+                <div class="services__header-intro">
+                    <div class="badge">Practice area</div>
+                    <h2 class="services__heading">
+                        Leagal <span class="colored-text">services</span> you can
+                        trust
+                    </h2>
+                </div>
+                <div class="services__header-body">
+                    <div class="services__description">
+                        Robert works closely with clients, providing clear,
+                        practical legal solutions with trust and transparency.
+                    </div>
+                    <div
+                        class="slider-controls"
+                        role="group"
+                        aria-label="Slider navigation"
+                    >
+                        <button
+                            type="button"
+                            class="slider-controls__btn slider-controls__btn--prev"
+                            aria-label="Previous service"
+                        >
+                            <span class="btn__icon" aria-hidden="true">
+                                <svg class="icon" width="24" height="24">
+                                    <use xlink:href="/sprite.svg#arrow-left"
+                                    ></use>
+                                </svg>
+                            </span>
+                            <span class="btn__bg" aria-hidden="true"></span>
+                        </button>
 
+                        <button
+                            type="button"
+                            class="slider-controls__btn slider-controls__btn--next"
+                            aria-label="Next service"
+                        >
+                            <span class="btn__icon" aria-hidden="true">
+                                <svg class="icon" width="24" height="24">
+                                    <use xlink:href="/sprite.svg#arrow-right"
+                                    ></use>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="services__list">
+                {
+                    services.map((item, index) => (
+                        <div class="services__item">
+                            <div class="services__media">
+                                <Image
+                                    src={item.thumbnail}
+                                    alt={item.title}
+                                    width={item.thumbnail.width}
+                                />
+                            </div>
+                            <div class="services__content">
+                                <h3 class="services__title">{item.title}</h3>
+                                <p class="services__description">
+                                    {item.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+            <div class="services__cta">
+                <Button type="primary" title="Start your case" />
+            </div>
+        </div>
+    </section>
+    <section id="reason" class="reason">
+        <div class="reason__wrapper container">
+            <div class="reason__intro">
+                <div class="badge">Why choose us</div>
+                <h2 class="reason__heading">
+                    Why <span class="colored-text">choose</span> robert
+                </h2>
+            </div>
+            <div class="reason__media">
+                <Image
+                    src={whyChooseOneImg}
+                    alt="Robert speaking"
+                    width={whyChooseOneImg.width}
+                />
+            </div>
+            <div class="reason__list">
+                {
+                    whyChoose.map((item) => (
+                        <div class="reason__item">
+                            <div class="reason__icon">
+                                <Icon name={item.icon} />
+                            </div>
+                            <h3 class="reason__title">{item.title}</h3>
+                            <div class="divider" />
+                            <p class="reason__description">
+                                {item.description}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+    <section id="step" class="step">
+        <div class="step__wrapper container">
+            <div class="step__intro">
+                <div class="badge">4 step process</div>
+                <h2 class="step__heading">
+                    Simple & transparent <span class="colored-text"
+                        >process</span
+                    >
+                </h2>
+            </div>
+            <div class="step__list">
+                <div class="step__list-bg">
+                    <svg class="icon">
+                        <use xlink:href="/sprite.svg#line-icon"></use>
+                    </svg>
+                </div>
+                {
+                    process.map((item, i) => (
+                        <div class="step__item">
+                            <div class="step__icon">
+                                <Icon name={item.icon} />
+                            </div>
+                            <div class="step__content">
+                                <h3 class="step__title">
+                                    <span class="step__heading-order">
+                                        {i + 1}.
+                                    </span>
+                                    {item.title}
+                                </h3>
+                                <p class="step__description">
+                                    {item.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+            <div class="step__media">
+                <Image
+                    src={processImg}
+                    alt="Robert explaining"
+                    width={processImg.width}
+                    height={processImg.height}
+                />
+            </div>
+        </div>
+    </section>
+    <section id="case-study" class="case-study">
+        <div class="case-study__wrapper container">
+            <div class="case-study__header">
+                <div class="case-study__header-intro">
+                    <div class="badge">Case studies</div>
+                    <h2 class="case-study__heading">
+                        Proven results from real <span class="colored-text"
+                            >results</span
+                        >
+                    </h2>
+                </div>
+                <div class="case-study__header-content">
+                    <p class="case-study__description">
+                        Each case shows Robert's thoughtful approach, focusing
+                        on clarity, strategy, and reliable results.
+                    </p>
+                    <SliderController />
+                </div>
+            </div>
+            <div class="case-study__list">
+                {
+                    caseStudies.map((item) => (
+                        <div class="case-study__item">
+                            <div class="case-study__header">
+                                <div class="case-study__category">
+                                    {item.category}
+                                </div>
+                                <Image
+                                    class="case-study__media"
+                                    src={item.thumbnail}
+                                    alt={item.title}
+                                    width={item.thumbnail.width}
+                                />
+                            </div>
+                            <div class="case-study__content">
+                                <div class="case-study__date">{item.date}</div>
+                                <h3 class="case-study__title">{item.title}</h3>
+                                <p class="case-study__description">
+                                    {item.description}
+                                </p>
+                                <Button
+                                    title="Read the full cases"
+                                    type="primary"
+                                />
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+    <section id="testimonials" class="testimonials">
+        <div class="testimonials__wrapper continer">
+            <div class="testimonials__intro">
+                <div class="badge">Testimonial</div>
+                <h2 class="testimonial__heading">
+                    See what our <span class="colored-text">clients</span> are saying
+                </h2>
+            </div>
+            <div class="testimonials__nav">
+                <SliderController />
+            </div>
+            <div class="testimonials__list">
+                {
+                    testimonials.map((item, i) => (
+                        <article
+                            class="testimonials-item"
+                            role="group"
+                            aria-roledescription="slide"
+                            aria-label={`Testimonial by ${item.name}`}
+                        >
+                            <div class="testimonials-item__media">
+                                <Image src={item.featuredImg} alt={item.name} />
+                                <div
+                                    class="testimonials-item__icon"
+                                    aria-hidden="true"
+                                >
+                                    <Image
+                                        src={quoteImg}
+                                        alt="Quote"
+                                        role="presentation"
+                                    />
+                                </div>
+                            </div>
+                            <div class="testimonials-item__content">
+                                <blockquote class="testimonial-item__feedback">
+                                    <p>{item.quote}</p>
+                                </blockquote>
+                                <div class="testimonials-item__author">
+                                    <div class="testimonials-item__author">
+                                        <Image
+                                            class="testimonials-item__author-image"
+                                            src={item.avatar}
+                                            alt={item.name}
+                                        />
+                                    </div>
+                                    <div class="testimonials-item__author-info">
+                                        <h4 class="author-name">{item.name}</h4>
+                                        <p class="author-role">{item.role}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+    <section id="faq" class="faq">
+        <div class="faq__wrapper container">
+            <div class="faq__intro">
+                <div class="badge">FAQ's</div>
+                <h2 class="faq__heading">
+                    Got <span class="colored-text">questions?</span> Robert has answers
+                </h2>
+                <Image
+                    class="faq__image"
+                    alt="Robert ovserving case files"
+                    src={faqImg}
+                />
+            </div>
+            <div class="faq__list">
+                {
+                    faq.map((faq, index) => (
+                        <div class="accordion-item">
+                            <button
+                                id={`accordion-button-${index}`}
+                                class="accordion-item__button"
+                                aria-expanded="false"
+                                aria-controls={`accordion-item__content-${index}`}
+                            >
+                                <div class="accrodion-item__header">
+                                    <span class="order">{index + 1}</span>
+                                    <span class="accordion-item__title">
+                                        {faq.question}
+                                    </span>
+                                    <span
+                                        class="accordion-item__icon"
+                                        aria-hidden="true"
+                                    >
+                                        <Icon name="plus-icon" />
+                                    </span>
+                                </div>
+                            </button>
+                            <div
+                                id={`accordion-item__content-${index}`}
+                                class="accordion-item__content"
+                                aria-labelledby={`accordion-button-${index}`}
+                                role="region"
+                            >
+                                <p>{faq.answer}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+            <div class="faq__media">
+                <Image
+                    class="faq__image"
+                    alt="Robert ovserving case files"
+                    src={faqImg}
+                />
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="contact__wrapper container">
+            <div class="contact__intro">
+                <div class="badge">Contact us</div>
+                <h2 class="contact__heading">
+                    Get the <span class="colored-text">legal help</span> you deserve
+                </h2>
+            </div>
+            <div class="contact__content">
+                <div class="contact-form__wrapper">
+                    <h3 class="contact-form__title">
+                        Take the <span class="colored-text">first step</span>
+                    </h3>
+                    <form action="#" class="contact-form" method="POST">
+                        <div class="contact-form__row">
+                            <div class="contact-form__group">
+                                <label
+                                    for="your-name"
+                                    class="contact-form__label">Your name</label
+                                >
+                                <input
+                                    type="text"
+                                    name="your_name"
+                                    id="your-name"
+                                    placeholder="Your name"
+                                    required
+                                    aria-required="true"
+                                />
+                            </div>
+                            <div class="contact-form__group">
+                                <label
+                                    for="your-email"
+                                    class="contact-form__label"
+                                    >Your email</label
+                                >
+                                <input
+                                    type="email"
+                                    name="your_email"
+                                    id="your-email"
+                                    placeholder="Your email"
+                                    required
+                                    aria-required="true"
+                                />
+                            </div>
+                        </div>
+                        <div class="contact-form__row">
+                            <div class="contact-form__group">
+                                <label
+                                    for="your-phone"
+                                    class="contact-form__label"
+                                    >Your phone number</label
+                                >
+                                <input
+                                    type="tel"
+                                    name="your_phone"
+                                    id="your-phone"
+                                    placeholder="Your phone numebr"
+                                />
+                            </div>
+                            <div class="contact-form__group">
+                                <label
+                                    for="service-type"
+                                    class="contact-form__label"
+                                    >Type of service</label
+                                >
+                                <select
+                                    name="service_type"
+                                    id="service-type"
+                                    required
+                                    aria-required="true"
+                                >
+                                    <option
+                                        value="Select a service"
+                                        disabled
+                                        selected>Select a service</option
+                                    >
+                                    <option value="criminal_defense"
+                                        >Criminal defense</option
+                                    >
+                                    <option value="family_law"
+                                        >Family law</option
+                                    >
+                                    <option value="personal_injury"
+                                        >Personal injury</option
+                                    >
+                                    <option value="business_and_corporate_law"
+                                        >Business & corporate law</option
+                                    >
+                                    <option value="real_estate_law"
+                                        >Real estate law</option
+                                    >
+                                    <option value="wills_and_estate_planning"
+                                        >Wills & estate planning</option
+                                    >
+                                </select>
+                            </div>
+                        </div>
+                        <div class="contact-form__row">
+                            <div class="contact-form__group">
+                                <label for="message" class="contact-form__label"
+                                    >Message</label
+                                >
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="6"
+                                    placeholder="Enter your message"
+                                    class="contact-form__textarea"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <button
+                            type="submit"
+                            class="btn form-button"
+                            aria-label="Send message"
+                        >
+                            <span class="btn__text">Send message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="contact__media">
+                <Image src={contactImg} alt="Robert" class="contact__image" />
+            </div>
+        </div>
+    </section>
     <Fragment slot="bottom-style">
         <link rel="stylesheet" href={underTheFold} />
         <link rel="stylesheet" href={splideCssUrl} />

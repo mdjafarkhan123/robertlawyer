@@ -1,0 +1,31 @@
+---
+import Icon from "./Svg.astro";
+
+const { name } = Astro.props;
+---
+
+<div
+    class={`slider-controls ${name}`}
+    role="group"
+    aria-label="Slider navigation"
+>
+    <button
+        type="button"
+        class="slider-controls__btn slider-controls__btn--prev"
+        aria-label={`Previous ${name}`}
+    >
+        <span class="btn__icon" aria-hidden="true">
+            <Icon name="left-arrow" />
+        </span>
+    </button>
+
+    <button
+        type="button"
+        class="slider-controls__btn slider-controls__btn--next"
+        aria-label={`Next ${name}`}
+    >
+        <span class="btn__icon" aria-hidden="true">
+            <Icon name="right-arrow" />
+        </span>
+    </button>
+</div>

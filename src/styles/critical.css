@@ -5,7 +5,6 @@
     font-weight: 400;
     src: url(/src/assets/fonts/suranna-v15-latin-regular.woff2) format("woff2");
 }
-
 @font-face {
     font-display: swap;
     font-family: "Body";
@@ -26,7 +25,7 @@
     --color-accent: #b79e63;
     --color-heading-white: #fff;
     --color-heading-dark: #021f12;
-    --color-text-white: #dbdbdb;
+    --color-text-white: #b1b1b1;
     --color-text-dark: #666;
     --color-background: #f8f6f2;
     --color-white: #fff;
@@ -89,7 +88,13 @@ body {
     min-height: 100vh;
     min-width: 320px;
     line-height: 1.5;
-    font-family: "Body", system-ui, -apple-system, Avenir, Helvetica, Arial,
+    font-family:
+        "Body",
+        system-ui,
+        -apple-system,
+        Avenir,
+        Helvetica,
+        Arial,
         sans-serif;
     font-size: var(--fs-base);
     font-weight: 400;
@@ -171,7 +176,9 @@ h4 {
     font-size: var(--fs-xl);
 }
 .header {
+    background-color: transparent;
     position: relative;
+    margin-bottom: -70px;
     z-index: 900;
 }
 .header__container {
@@ -279,10 +286,93 @@ h4 {
     display: none;
 }
 
-.badge .icon {
-    color: red;
+.hero {
+    background-color: var(--color-primary);
+    padding-block: calc(var(--space-fluid-2xl) + var(--space-xl))
+        var(--space-xl);
+    background: radial-gradient(
+        ellipse 70% 29% at 50% -4%,
+        var(--color-secondary),
+        var(--color-primary)
+    );
 }
-
+.hero__wrapper {
+    gap: var(--space-fluid-md);
+}
+.hero__media {
+    margin-bottom: -12rem;
+}
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--color-text-white);
+    align-items: center;
+    text-align: center;
+    gap: var(--space-sm);
+}
+.hero__content .badge {
+    position: relative;
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-heading-white);
+    border-color: transparent;
+    line-height: 1;
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(4px) saturate(120%);
+    background: rgba(210, 210, 210, 0.26);
+    overflow: hidden;
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    padding-top: 6px;
+    padding-right: 25px;
+    padding-bottom: 6px;
+    padding-left: 25px;
+    border-radius: 100px;
+    margin-bottom: var(--space-base);
+    gap: var(--space-xsm);
+}
+.hero__content .badge::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgb(0 0 0 / 4%) 64%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+.hero__heading {
+    color: var(--color-heading-white);
+}
+.hero__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--space-xsm);
+    place-items: center;
+}
+.stats__item {
+    color: var(--color-text-white);
+    line-height: 1.2;
+    text-align: center;
+}
+.stats__header {
+    font-family: "Heading", system-ui;
+    font-size: var(--fs-fluid-lg);
+}
+.stats__icon {
+    display: none;
+}
 @media (min-width: 992px) {
     .header__container {
         max-width: 1920px;

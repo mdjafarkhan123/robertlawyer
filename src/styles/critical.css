@@ -1,24 +1,28 @@
+header,
+section,
+footer {
+    opacity: 1;
+}
 @font-face {
     font-display: swap;
     font-family: "Heading";
     font-style: normal;
     font-weight: 400;
-    src: url("/src/assets/fonts/suranna-v15-latin-regular.woff2")
-        format("woff2");
+    src: url("/fonts/suranna-v15-latin-regular.woff2") format("woff2");
 }
 @font-face {
     font-display: swap;
     font-family: "Body";
     font-style: normal;
     font-weight: 400;
-    src: url("/src/assets/fonts/inter-v20-latin-regular.woff2") format("woff2");
+    src: url("/fonts/inter-v20-latin-regular.woff2") format("woff2");
 }
 @font-face {
     font-display: swap;
     font-family: "Body";
     font-style: normal;
     font-weight: 600;
-    src: url("/src/assets/fonts/inter-v20-latin-600.woff2") format("woff2");
+    src: url("/fonts/inter-v20-latin-600.woff2") format("woff2");
 }
 :root {
     --color-primary: #021f12;

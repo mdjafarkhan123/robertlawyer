@@ -3,7 +3,7 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import utfFooterCss from "../styles/pages/footer/footer.scss?url";
 import baseStyle from "../styles/globals/base.scss?url";
-import criticalCss from "../styles/critical.css?url";
+import criticalCss from "../styles/critical.css?raw";
 ---
 
 <!doctype html>
@@ -43,21 +43,21 @@ import criticalCss from "../styles/critical.css?url";
         <!-- Font Preloading -->
         <link
             rel="preload"
-            href="/src/assets/fonts/suranna-v15-latin-regular.woff2"
+            href="/fonts/suranna-v15-latin-regular.woff2"
             as="font"
             type="font/woff2"
             crossorigin
         />
         <link
             rel="preload"
-            href="/src/assets/fonts/inter-v20-latin-regular.woff2"
+            href="/fonts/inter-v20-latin-regular.woff2"
             as="font"
             type="font/woff2"
             crossorigin
         />
 
         <title>Roofix - Roofing service website</title>
-        <link rel="stylesheet" href={criticalCss} />
+        <style is:inline set:html={criticalCss}></style>
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",

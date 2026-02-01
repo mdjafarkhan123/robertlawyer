@@ -3,7 +3,7 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import utfFooterCss from "../styles/pages/footer/footer.scss?url";
 import baseStyle from "../styles/globals/base.scss?url";
-import criticalCss from "../styles/critical.css?raw";
+import criticalCss from "../styles/critical.css?url";
 ---
 
 <!doctype html>
@@ -41,7 +41,7 @@ import criticalCss from "../styles/critical.css?raw";
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         <!-- Font Preloading -->
-        <!-- <link
+        <link
             rel="preload"
             href="/src/assets/fonts/suranna-v15-latin-regular.woff2"
             as="font"
@@ -54,10 +54,10 @@ import criticalCss from "../styles/critical.css?raw";
             as="font"
             type="font/woff2"
             crossorigin
-        /> -->
+        />
 
         <title>Roofix - Roofing service website</title>
-        <style is:inline set:html={criticalCss}></style>
+        <link rel="stylesheet" href={criticalCss} />
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",

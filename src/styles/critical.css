@@ -69,6 +69,7 @@
     --transition: 0.3s ease;
     --line-thickness: 2px;
 }
+
 html {
     font-size: 62.5%;
     line-height: 1.5;
@@ -77,6 +78,7 @@ html {
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
+
 *,
 ::before,
 ::after {
@@ -182,7 +184,7 @@ h4 {
     z-index: 900;
 }
 .header__container {
-    width: calc(100% - 1.6rem);
+    width: calc(100% - 20px) !important;
     min-height: 60px;
     display: flex;
     align-items: center;
@@ -311,7 +313,7 @@ h4 {
     text-align: center;
     gap: var(--space-sm);
 }
-.hero__content .badge {
+.glassmorphism-effect {
     position: relative;
     display: flex;
     width: fit-content;
@@ -334,7 +336,7 @@ h4 {
     margin-bottom: var(--space-base);
     gap: var(--space-xsm);
 }
-.hero__content .badge::before {
+.glassmorphism-effect::before {
     content: "";
     position: absolute;
     inset: 0;

@@ -221,7 +221,7 @@ const faq = [
                 />
             </div>
             <div class="hero__content">
-                <div class="badge">
+                <div class="glassmorphism-effect">
                     <span class="icon">
                         <Icon name="auction-fill" src="abovethefold" />
                     </span>
@@ -478,21 +478,25 @@ const faq = [
                 {
                     caseStudies.map((item) => (
                         <div class="case-study__item">
-                            <div class="case-study__header">
-                                <div class="case-study__category">
+                            <div class="case-study__item-header">
+                                <div class="case-study__item-category glassmorphism-effect">
                                     {item.category}
                                 </div>
                                 <Image
-                                    class="case-study__media"
+                                    class="case-study__item-media"
                                     src={item.thumbnail}
                                     alt={item.title}
                                     width={item.thumbnail.width}
                                 />
                             </div>
-                            <div class="case-study__content">
-                                <div class="case-study__date">{item.date}</div>
-                                <h3 class="case-study__title">{item.title}</h3>
-                                <p class="case-study__description">
+                            <div class="case-study__item-content">
+                                <div class="case-study__item-date">
+                                    {item.date}
+                                </div>
+                                <h3 class="case-study__item-title">
+                                    {item.title}
+                                </h3>
+                                <p class="case-study__item-description">
                                     {item.description}
                                 </p>
                                 <Button
@@ -507,7 +511,7 @@ const faq = [
         </div>
     </section>
     <section id="testimonials" class="testimonials">
-        <div class="testimonials__wrapper continer">
+        <div class="testimonials__wrapper container">
             <div class="testimonials__intro">
                 <div class="badge">Testimonial</div>
                 <h2 class="testimonial__heading">
@@ -540,7 +544,7 @@ const faq = [
                                 </div>
                             </div>
                             <div class="testimonials-item__content">
-                                <blockquote class="testimonial-item__feedback">
+                                <blockquote class="testimonials-item__feedback">
                                     <p>{item.quote}</p>
                                 </blockquote>
                                 <div class="testimonials-item__author">
@@ -586,8 +590,8 @@ const faq = [
                                 aria-expanded="false"
                                 aria-controls={`accordion-item__content-${index}`}
                             >
-                                <div class="accrodion-item__header">
-                                    <span class="order">{index + 1}</span>
+                                <h3 class="accrodion-item__header">
+                                    <span class="order">0{index + 1}</span>
                                     <span class="accordion-item__title">
                                         {faq.question}
                                     </span>
@@ -597,7 +601,7 @@ const faq = [
                                     >
                                         <Icon name="plus-icon" />
                                     </span>
-                                </div>
+                                </h3>
                             </button>
                             <div
                                 id={`accordion-item__content-${index}`}
@@ -733,7 +737,7 @@ const faq = [
                         </div>
                         <button
                             type="submit"
-                            class="btn form-button"
+                            class="form-button"
                             aria-label="Send message"
                         >
                             <span class="btn__text">Send message</span>

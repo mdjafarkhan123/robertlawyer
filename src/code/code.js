@@ -110,7 +110,7 @@ function initButtonEffect() {
                 if (!rect) return;
                 bg.style.left = `${e.clientX - rect.left}px`;
                 bg.style.top = `${e.clientY - rect.top}px`;
-            }, 16)
+            }, 16),
         );
     });
 }
@@ -162,12 +162,12 @@ function initLazyLoad() {
                         // Add <use> element to SVG
                         const use = document.createElementNS(
                             "http://www.w3.org/2000/svg",
-                            "use"
+                            "use",
                         );
                         use.setAttributeNS(
                             "http://www.w3.org/1999/xlink",
                             "xlink:href",
-                            `${spritePath}#${iconId}`
+                            `${spritePath}#${iconId}`,
                         );
                         el.appendChild(use);
                         el.classList.add("loaded");
@@ -177,7 +177,7 @@ function initLazyLoad() {
                 }
             });
         },
-        { rootMargin: CONFIG.LAZY_LOAD.rootMargin }
+        { rootMargin: CONFIG.LAZY_LOAD.rootMargin },
     );
 
     // Observe all lazy elements
@@ -186,6 +186,7 @@ function initLazyLoad() {
 }
 
 // Slide up animation
+
 function initSlideUpAnimation() {
     const elements = document.querySelectorAll(".slide-up");
     if (!elements.length) return;
@@ -204,6 +205,24 @@ function initSlideUpAnimation() {
     });
 }
 
+// Accordion
+function faq() {
+    const items = document.querySelectorAll(".accordion-item__button");
+    console.log(items);
+
+    function toggleAction(e) {
+        const state = this.getAttribute("aria-expanded");
+        if (state == "false") {
+            this.setAttribute("aria-expanded", "true");
+        } else {
+            this.setAttribute("aria-expanded", "false");
+        }
+    }
+
+    items.forEach((item) => {
+        item.addEventListener("click", toggleAction);
+    });
+}
 // Main initialization
 function init() {
     let mm = gsap.matchMedia();
@@ -211,6 +230,7 @@ function init() {
     // Universal initializations
     initSmoothScroll();
     initLazyLoad(); // Now handles both BG images and SVGs
+    faq();
 
     // Responsive logic using matchMedia
     mm.add(
@@ -237,14 +257,14 @@ function init() {
             }
 
             return () => {};
-        }
+        },
     );
 
     window.addEventListener(
         "resize",
         throttle(() => {
             ScrollTrigger.refresh();
-        }, 300)
+        }, 300),
     );
 }
 

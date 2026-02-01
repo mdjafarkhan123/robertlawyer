@@ -145,6 +145,7 @@
         text-transform: unset;
         span.img img {
             border-radius: 100px;
+            aspect-ratio: 85/44;
         }
         span.img:not(:nth-of-type(1)) img {
             border-radius: var(--round-md);
@@ -294,6 +295,231 @@
     }
     &__description {
         color: var(--color-text-white);
+    }
+    &__media {
+        overflow: hidden;
+        border-radius: var(--round-md);
+    }
+}
+
+.case-study {
+    padding-block: var(--space-fluid-2xl);
+    &__wrapper {
+        gap: var(--space-fluid-lg);
+    }
+    &__heading {
+        margin-bottom: var(--space-md);
+    }
+    .slider-controls {
+        display: none;
+    }
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    &__item {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-white);
+        border-radius: var(--round-md);
+        padding: var(--space-md) var(--space-xsm);
+        gap: var(--space-fluid-sm);
+        &-header {
+            position: relative;
+        }
+        &-category {
+            position: absolute;
+            top: 0.8rem;
+            left: 0.8rem;
+            background-color: rgba(92, 92, 92, 0.267);
+            padding-block: var(--space-2xsm);
+        }
+        &-media {
+            overflow: hidden;
+            border-radius: var(--round-md);
+        }
+        &-date {
+            font-size: var(--fs-xsm);
+        }
+        &-content {
+            display: grid;
+            gap: var(--space-sm);
+        }
+    }
+}
+
+.testimonials {
+    padding-block: var(--space-fluid-2xl);
+    background-color: var(--color-white);
+    text-align: center;
+    &__wrapper {
+        gap: var(--space-fluid-lg);
+    }
+    &__nav {
+        display: none;
+    }
+    &-item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+        &__media {
+            border-radius: var(--round-md);
+            overflow: hidden;
+        }
+        &__icon {
+            display: none;
+        }
+        &__feedback {
+            font-size: var(--fs-md);
+            font-style: italic;
+            margin-bottom: var(--space-sm);
+        }
+        &__author {
+            display: flex;
+            justify-content: center;
+            text-align: left;
+            gap: var(--space-xsm);
+            .author-role {
+                font-size: var(--fs-xsm);
+            }
+        }
+    }
+}
+
+.faq {
+    padding-block: var(--space-fluid-2xl);
+    background-color: var(--color-bg);
+    &__wrapper {
+        gap: var(--space-fluid-lg);
+    }
+    &__intro {
+        img {
+            display: none;
+        }
+    }
+
+    &__list {
+        display: grid;
+        gap: var(--space-md);
+    }
+    .accordion-item {
+        display: flex;
+        flex-flow: column;
+        background-color: var(--color-white);
+        padding: var(--space-md) var(--space-sm);
+        border-radius: var(--round-md);
+        .accrodion-item__header {
+            display: flex;
+            width: 100%;
+            gap: var(--space-sm);
+        }
+        .order {
+            font-size: var(--fs-xl);
+            color: #979797;
+        }
+        &__button {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            text-align: start;
+            padding: 0;
+            gap: 20px;
+        }
+        &__title {
+            flex-grow: 1;
+            font-size: var(--fs-xl);
+            color: var(--color-heading-dark);
+        }
+        &__icon {
+            svg {
+                width: 24px;
+                fill: var(--color-white);
+            }
+        }
+        &__button[aria-expanded="false"] {
+            .accordion-item__icon svg {
+                transform: rotate(0deg);
+                transition: transform 0.3s linear;
+            }
+        }
+        &__button[aria-expanded="true"] {
+            .accordion-item__icon svg {
+                transform: rotate(135deg);
+                transition: transform 0.3s linear;
+            }
+        }
+        .accordion-item__content {
+            p {
+                color: var(--color-text-dark);
+                font-weight: 400;
+                line-height: 1.6em;
+                margin-top: var(--space-xsm);
+            }
+        }
+        &__button[aria-expanded="false"] ~ .accordion-item__content {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s linear;
+            will-change: opacity, max-height;
+        }
+
+        &__button[aria-expanded="true"] ~ .accordion-item__content {
+            opacity: 1;
+            max-height: 20em;
+            transition: all 0.4s linear;
+            will-change: opacity, max-height;
+        }
+    }
+
+    &__media {
+        overflow: hidden;
+        border-radius: var(--round-md);
+    }
+}
+
+.contact {
+    --space: var(--space-sm);
+    padding-block: var(--space-fluid-2xl);
+    background-color: var(--color-white);
+    &__wrapper {
+        gap: var(--space-fluid-lg);
+    }
+    &-form__wrapper {
+        background-color: var(--color-background);
+        padding: var(--space-lg) var(--space-sm);
+        border-radius: var(--round-md);
+        label {
+            display: none;
+        }
+    }
+    &-form__title {
+        margin-bottom: var(--space-md);
+    }
+    &-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space);
+        input,
+        textarea,
+        select {
+            padding: var(--space-sm);
+            background-color: var(--color-white);
+            border-radius: var(--round-md);
+        }
+        &__row {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space);
+        }
+        button {
+            background-color: var(--color-accent);
+            border-radius: 100px;
+            color: var(--color-white);
+        }
     }
     &__media {
         overflow: hidden;

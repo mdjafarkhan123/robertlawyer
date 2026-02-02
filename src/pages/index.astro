@@ -212,12 +212,13 @@ const faq = [
         <div class="hero__wrapper container">
             <div class="hero__media">
                 <Image
-                    widths={[480, 592]}
                     src={robertImg}
+                    widths={[400, 800, 592, 1184]}
+                    sizes="(max-width: 768px) 100vw, 592px"
                     alt="Robert the lawyer"
-                    sizes="(max-width: 768px) 480px, 592px"
                     loading="eager"
                     fetchpriority="high"
+                    class="hero-image"
                 />
             </div>
             <div class="hero__content">

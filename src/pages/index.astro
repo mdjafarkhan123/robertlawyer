@@ -4,8 +4,8 @@ import Button from "../components/Button.astro";
 import underTheFold from "../styles/pages/home/home.scss?url";
 import splideCssUrl from "@splidejs/splide/css?url";
 import Layout from "../layout/Layout.astro";
-import { Picture } from "astro:assets";
-import robertImg from "../assets/images/robert.avif";
+import robertSm from "../assets/images/robertsm.avif";
+import robertLg from "../assets/images/robert.avif";
 import aboutOneImg from "../assets/images/about-one.avif";
 import aboutTwoImg from "../assets/images/about-two.avif";
 import aboutThreeImg from "../assets/images/about-three.avif";
@@ -211,16 +211,17 @@ const faq = [
     <section id="hero" class="hero">
         <div class="hero__wrapper container">
             <div class="hero__media">
-                <Image
-                    src={robertImg}
-                    widths={[328, 656, 592, 1184]}
-                    sizes="(max-width: 768px) 328px, 592px"
-                    alt="Robert the lawyer"
-                    loading="eager"
-                    fetchpriority="high"
-                    decoding="sync"
-                    class="hero-image"
-                />
+                <picture class="hero__image">
+                    <source media="(min-width: 768)" srcset={robertLg.src} />
+                    <img
+                        src={robertSm.src}
+                        alt="Robert"
+                        loading="eager"
+                        fetchpriority="high"
+                        width={robertSm.width}
+                        height={robertSm.height}
+                    />
+                </picture>
             </div>
             <div class="hero__content">
                 <div class="glassmorphism-effect">

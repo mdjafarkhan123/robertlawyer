@@ -25,6 +25,10 @@ import quoteImg from "../assets/images/quote.avif";
 
 import SliderController from "../components/SliderController.astro";
 import Icon from "../components/Svg.astro";
+import { getImage } from "astro:assets";
+
+const optimizedLg = await getImage({ src: robertLg, format: "avif" });
+const optimizedSm = await getImage({ src: robertSm, format: "avif" });
 
 const stats = [
     {
@@ -212,14 +216,20 @@ const faq = [
         <div class="hero__wrapper container">
             <div class="hero__media">
                 <picture class="hero__image">
-                    <source media="(min-width: 768)" srcset={robertLg.src} />
+                    <source
+                        media="(min-width: 640px)"
+                        srcset={optimizedLg.src}
+                        width={optimizedLg.attributes.width}
+                        height={optimizedLg.attributes.height}
+                    />
+
                     <img
-                        src={robertSm.src}
+                        src={optimizedSm.src}
                         alt="Robert"
                         loading="eager"
                         fetchpriority="high"
-                        width={robertSm.width}
-                        height={robertSm.height}
+                        width={optimizedSm.attributes.width}
+                        height={optimizedSm.height}
                     />
                 </picture>
             </div>

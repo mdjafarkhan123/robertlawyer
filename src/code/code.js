@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import Splide from "@splidejs/splide";
 
 // Configuration
 const CONFIG = {
@@ -15,6 +16,13 @@ const CONFIG = {
     },
     LAZY_LOAD: {
         rootMargin: "100px", // Start loading 100px before element is visible
+    },
+    SPLIDE: {
+        type: "loop",
+        perPage: 3,
+        gap: "2rem",
+        arrows: false,
+        pagination: true,
     },
 };
 
@@ -223,6 +231,32 @@ function faq() {
         item.addEventListener("click", toggleAction);
     });
 }
+
+//Slider
+function initSlider() {
+    const splideEl = document.querySelector(".testimonials .splide");
+    if (!splideEl) return;
+
+    const splide = new Splide(splideEl, {
+        ...CONFIG.SPLIDE,
+        breakpoints: {
+            [CONFIG.BREAKPOINTS.DESKTOP]: { perPage: 2 },
+            640: { perPage: 1 },
+        },
+    }).mount();
+
+    const prevBtns = document.querySelectorAll(".slider-controls__btn--prev");
+    const nextBtns = document.querySelectorAll(".slider-controls__btn--next");
+
+    prevBtns.forEach((btn) =>
+        btn.addEventListener("click", () => splide.go("<")),
+    );
+    nextBtns.forEach((btn) =>
+        btn.addEventListener("click", () => splide.go(">")),
+    );
+    console.log(splideEl);
+}
+
 // Main initialization
 function init() {
     let mm = gsap.matchMedia();
@@ -231,6 +265,7 @@ function init() {
     initSmoothScroll();
     initLazyLoad(); // Now handles both BG images and SVGs
     faq();
+    initSlider();
 
     // Responsive logic using matchMedia
     mm.add(

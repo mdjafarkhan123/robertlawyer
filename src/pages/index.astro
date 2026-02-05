@@ -534,49 +534,60 @@ const faq = [
             <div class="testimonials__nav">
                 <SliderController />
             </div>
-            <div class="testimonials__list">
-                {
-                    testimonials.map((item, i) => (
-                        <article
-                            class="testimonials-item"
-                            role="group"
-                            aria-roledescription="slide"
-                            aria-label={`Testimonial by ${item.name}`}
-                        >
-                            <div class="testimonials-item__media">
-                                <Image src={item.featuredImg} alt={item.name} />
-                                <div
-                                    class="testimonials-item__icon"
-                                    aria-hidden="true"
+            <div class="splide testimonials__splide">
+                <div class="splide__track">
+                    <div class="testimonials__list splide__list">
+                        {
+                            testimonials.map((item, i) => (
+                                <article
+                                    class="testimonials-item splide__slide"
+                                    role="group"
+                                    aria-roledescription="slide"
+                                    aria-label={`Testimonial by ${item.name}`}
                                 >
-                                    <Image
-                                        src={quoteImg}
-                                        alt="Quote"
-                                        role="presentation"
-                                    />
-                                </div>
-                            </div>
-                            <div class="testimonials-item__content">
-                                <blockquote class="testimonials-item__feedback">
-                                    <p>{item.quote}</p>
-                                </blockquote>
-                                <div class="testimonials-item__author">
-                                    <div class="testimonials-item__author">
+                                    <div class="testimonials-item__media">
                                         <Image
-                                            class="testimonials-item__author-image"
-                                            src={item.avatar}
+                                            src={item.featuredImg}
                                             alt={item.name}
                                         />
+                                        <div
+                                            class="testimonials-item__icon"
+                                            aria-hidden="true"
+                                        >
+                                            <Image
+                                                src={quoteImg}
+                                                alt="Quote"
+                                                role="presentation"
+                                            />
+                                        </div>
                                     </div>
-                                    <div class="testimonials-item__author-info">
-                                        <h4 class="author-name">{item.name}</h4>
-                                        <p class="author-role">{item.role}</p>
+                                    <div class="testimonials-item__content">
+                                        <blockquote class="testimonials-item__feedback">
+                                            <p>{item.quote}</p>
+                                        </blockquote>
+                                        <div class="testimonials-item__author">
+                                            <div class="testimonials-item__author">
+                                                <Image
+                                                    class="testimonials-item__author-image"
+                                                    src={item.avatar}
+                                                    alt={item.name}
+                                                />
+                                            </div>
+                                            <div class="testimonials-item__author-info">
+                                                <h4 class="author-name">
+                                                    {item.name}
+                                                </h4>
+                                                <p class="author-role">
+                                                    {item.role}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </article>
-                    ))
-                }
+                                </article>
+                            ))
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -767,4 +778,7 @@ const faq = [
         <link rel="stylesheet" href={underTheFold} />
         <link rel="stylesheet" href={splideCssUrl} />
     </Fragment>
+
 </Layout>
+
+<span class="faq-order">01</span>

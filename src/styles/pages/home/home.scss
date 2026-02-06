@@ -1,4 +1,3 @@
-@use "../../utils" as *;
 .badge {
     position: relative;
     display: inline-block;
@@ -534,90 +533,5 @@
     &__media {
         overflow: hidden;
         border-radius: var(--round-md);
-    }
-}
-
-@include respond-to("mobile-lg") {
-    .hero {
-        &__stats {
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-        }
-    }
-}
-@include respond-to("mobile-xl") {
-    .hero {
-        &__stats {
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        }
-    }
-}
-@include respond-to("tablet") {
-    .hero {
-        &__stats {
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        }
-    }
-}
-
-@include respond-to("laptop") {
-    .hero {
-        overflow: hidden;
-        &__wrapper {
-            flex-flow: row wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0;
-        }
-        &__media {
-            order: 2;
-            width: 45%;
-            max-width: 592px;
-            margin-bottom: -15rem;
-            img {
-                width: 110%;
-                max-width: unset;
-            }
-        }
-        &__content {
-            max-width: 55%;
-            justify-content: flex-start;
-            align-items: flex-start;
-            text-align: left;
-            order: 1;
-        }
-        &__stats {
-            order: 3;
-            width: 100%;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            justify-items: stretch;
-            border-top: 1px solid var(--color-border-light);
-            padding-top: var(--space-sm);
-            .stats__icon {
-                display: block;
-                flex-shrink: 0;
-                svg {
-                    width: 40px;
-                }
-            }
-
-            .stats__header {
-                display: flex;
-                gap: var(--space-xsm);
-            }
-            .stats__body {
-                text-align: left;
-            }
-        }
-
-        &__description {
-            max-width: 590px;
-            font-size: var(--fs-md);
-        }
-    }
-}
-
-@media (min-width: 1100px) {
-    .hero__stats {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
 }

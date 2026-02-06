@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Button from "../components/Button.astro";
-import underTheFold from "../styles/pages/home/home.scss?url";
+// import underTheFold from "../styles/pages/home/home.scss?url";
 import splideCssUrl from "@splidejs/splide/css?url";
 import Layout from "../layout/Layout.astro";
 import robertSm from "../assets/images/robertsm.avif";
@@ -775,10 +775,11 @@ const faq = [
         </div>
     </section>
     <Fragment slot="bottom-style">
-        <link rel="stylesheet" href={underTheFold} />
+        <style>
+            @import "../styles/pages/home/home.scss";
+        </style>
         <link rel="stylesheet" href={splideCssUrl} />
     </Fragment>
-
 </Layout>
 
 <span class="faq-order">01</span>

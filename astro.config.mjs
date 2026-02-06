@@ -7,5 +7,13 @@ export default defineConfig({
         build: {
             cssCodeSplit: true, // Creates separate CSS files per import
         },
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    // This tells Sass it can look in these folders automatically
+                    loadPaths: ["./src/styles"],
+                },
+            },
+        },
     },
 });

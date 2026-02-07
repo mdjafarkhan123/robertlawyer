@@ -464,13 +464,13 @@ h4 {
         text-align: left;
     }
     .header {
-        margin-bottom: -80px;
+        margin-bottom: -100px;
     }
     .header__container {
-        max-width: 1920px;
-        background-color: transparent;
+        padding-right: var(--space-2xsm) !important;
     }
     .header__nav {
+        padding-block: var(--space-2xsm);
         justify-content: space-between;
     }
     .header__logo {
@@ -483,7 +483,6 @@ h4 {
         font-size: var(--fs-base);
         font-weight: 600;
         text-transform: capitalize;
-        background-color: var(--color-background);
         padding: 16px 44px;
         border-radius: 100px;
         transform: translateX(0);
@@ -517,6 +516,23 @@ h4 {
         justify-content: space-between;
         gap: 0;
     }
+
+    .hero {
+        position: relative;
+    }
+    .hero::before {
+        content: "";
+        position: absolute;
+        height: 200px;
+        width: 100%;
+        bottom: 0;
+        background: linear-gradient(#fff0 51%, #ffffff54 100%);
+        backdrop-filter: blur(10px);
+        overflow: hidden;
+        -webkit-mask: linear-gradient(#0000 20%, #000 75%);
+        mask: linear-gradient(#0000 20%, #000 75%);
+        z-index: 1;
+    }
     .hero__media {
         position: absolute;
         order: 2;
@@ -533,7 +549,11 @@ h4 {
         align-self: flex-start;
         order: 1;
         transform: translateY(25%);
-        z-index: inherit;
+        gap: var(--space-md);
+        z-index: 2;
+    }
+    .hero__content .btn {
+        margin-top: var(--space-2xsm);
     }
     .hero__stats {
         position: relative;
@@ -543,7 +563,7 @@ h4 {
         width: 100%;
         border-top: 1px solid var(--color-border-light);
         padding-top: var(--space-sm);
-        z-index: inherit;
+        z-index: 2;
     }
     .hero__stats .stats__icon {
         display: block;

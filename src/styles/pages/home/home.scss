@@ -131,8 +131,13 @@
 
 .about {
     padding-block: var(--space-fluid-2xl);
+    &__wrapper {
+        justify-content: center;
+        align-items: center;
+    }
     &__content {
         display: flex;
+        max-width: 1050px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -152,6 +157,10 @@
             overflow: hidden;
             line-height: 0;
         }
+    }
+
+    &__description {
+        max-width: 760px;
     }
     &__cta {
         display: flex;
@@ -534,4 +543,22 @@
         overflow: hidden;
         border-radius: var(--round-md);
     }
+}
+
+//======= Mobile Large =======//
+@media (min-width: 480px) {
+}
+//======= Mobile landscape =======//
+@media (min-width: 640px) {
+    .about {
+        &__description {
+            font-size: var(--fs-md);
+        }
+    }
+}
+//=======   Tablet  =======//
+@media (min-width: 768px) {
+}
+//======= Laptop =======//
+@media (min-width: 992px) {
 }

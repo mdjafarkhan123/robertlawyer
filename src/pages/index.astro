@@ -76,6 +76,24 @@ const services = [
             "Supportive and practical legal assistance for sensitive family-related issues.",
         thumbnail: serviceThreeImg,
     },
+    {
+        title: "Legal representation",
+        description:
+            "Professional advocacy designed to protect your interests throughout the legal process.",
+        thumbnail: serviceOneImg,
+    },
+    {
+        title: "Personal injury claims",
+        description:
+            "Dedicated representation focused on protecting your rights and pursuing fair compensation.",
+        thumbnail: serviceTwoImg,
+    },
+    {
+        title: "Family legal matters",
+        description:
+            "Supportive and practical legal assistance for sensitive family-related issues.",
+        thumbnail: serviceThreeImg,
+    },
 ];
 
 const whyChoose = [
@@ -328,41 +346,10 @@ const faq = [
                         Robert works closely with clients, providing clear,
                         practical legal solutions with trust and transparency.
                     </div>
-                    <div
-                        class="slider-controls"
-                        role="group"
-                        aria-label="Slider navigation"
-                    >
-                        <button
-                            type="button"
-                            class="slider-controls__btn slider-controls__btn--prev"
-                            aria-label="Previous service"
-                        >
-                            <span class="btn__icon" aria-hidden="true">
-                                <svg class="icon" width="24" height="24">
-                                    <use xlink:href="/sprite.svg#arrow-left"
-                                    ></use>
-                                </svg>
-                            </span>
-                            <span class="btn__bg" aria-hidden="true"></span>
-                        </button>
-
-                        <button
-                            type="button"
-                            class="slider-controls__btn slider-controls__btn--next"
-                            aria-label="Next service"
-                        >
-                            <span class="btn__icon" aria-hidden="true">
-                                <svg class="icon" width="24" height="24">
-                                    <use xlink:href="/sprite.svg#arrow-right"
-                                    ></use>
-                                </svg>
-                            </span>
-                        </button>
-                    </div>
+                    <SliderController />
                 </div>
             </div>
-            <div class="services__list">
+            <div class="services__list services__list--mobile">
                 {
                     services.map((item, index) => (
                         <div class="services__item">
@@ -382,6 +369,35 @@ const faq = [
                         </div>
                     ))
                 }
+            </div>
+            <div class="splide">
+                <div class="splide__track">
+                    <div
+                        class="services__list services__list--desktop splide__list"
+                    >
+                        {
+                            services.map((item, index) => (
+                                <div class="services__item splide__slide">
+                                    <div class="services__media">
+                                        <Image
+                                            src={item.thumbnail}
+                                            alt={item.title}
+                                            width={item.thumbnail.width}
+                                        />
+                                    </div>
+                                    <div class="services__content">
+                                        <h3 class="services__title">
+                                            {item.title}
+                                        </h3>
+                                        <p class="services__description">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
             </div>
             <div class="services__cta">
                 <Button type="primary" title="Start your case" />

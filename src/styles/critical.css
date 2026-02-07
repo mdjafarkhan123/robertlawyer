@@ -540,6 +540,9 @@ h4 {
         bottom: 0;
         margin: 0;
     }
+    .hero__media img {
+        width: clamp(52rem, 18.615rem + 33.654vw, 59rem);
+    }
 
     .hero__content {
         position: relative;

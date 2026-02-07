@@ -232,8 +232,32 @@ function faq() {
     });
 }
 
-//Slider
-function initSlider() {
+//Service Slider
+function initServiceSlider() {
+    const splideEl = document.querySelector(".services .splide");
+    if (!splideEl) return;
+
+    const splide = new Splide(splideEl, {
+        ...CONFIG.SPLIDE,
+        breakpoints: {
+            [CONFIG.BREAKPOINTS.DESKTOP]: { perPage: 2 },
+            640: { perPage: 1 },
+        },
+    }).mount();
+
+    const prevBtns = document.querySelectorAll(".slider-controls__btn--prev");
+    const nextBtns = document.querySelectorAll(".slider-controls__btn--next");
+
+    prevBtns.forEach((btn) =>
+        btn.addEventListener("click", () => splide.go("<")),
+    );
+    nextBtns.forEach((btn) =>
+        btn.addEventListener("click", () => splide.go(">")),
+    );
+    console.log(splideEl);
+}
+//Testimonial Slider
+function initTestimonialSlider() {
     const splideEl = document.querySelector(".testimonials .splide");
     if (!splideEl) return;
 
@@ -265,7 +289,8 @@ function init() {
     initSmoothScroll();
     initLazyLoad(); // Now handles both BG images and SVGs
     faq();
-    initSlider();
+    initTestimonialSlider();
+    initServiceSlider();
 
     // Responsive logic using matchMedia
     mm.add(

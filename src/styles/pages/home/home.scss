@@ -21,6 +21,8 @@
     gap: var(--space-2xsm);
     &__btn {
         display: inline-flex;
+        width: 56px;
+        height: 56px;
         color: var(--color-heading-dark);
         background-color: transparent;
         padding: 0;
@@ -31,6 +33,10 @@
             color: var(--color-white);
             background-color: var(--color-accent);
             border-color: var(--color-accent);
+        }
+        .btn__icon {
+            width: 100%;
+            line-height: 0;
         }
         .icon {
             width: 24px;
@@ -183,10 +189,14 @@
     .slider-controls {
         display: none;
     }
-    &__list {
+    &__list--mobile {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: var(--space-lg);
+    }
+
+    &__list--desktop {
+        display: none;
     }
     &__item {
         display: flex;
@@ -555,9 +565,41 @@
             font-size: var(--fs-md);
         }
     }
+    .services {
+        &__header-body {
+            font-size: var(--fs-md);
+        }
+    }
 }
 //=======   Tablet  =======//
 @media (min-width: 768px) {
+    .services {
+        &__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-md);
+            &-intro {
+                max-width: 340px;
+                .services__heading {
+                    margin-bottom: 0;
+                }
+            }
+            &-body {
+                max-width: 585px;
+                .slider-controls {
+                    margin-top: var(--space-md);
+                    display: inline-flex;
+                }
+            }
+        }
+        &__list--mobile {
+            display: none;
+        }
+        &__list--desktop {
+            display: flex;
+        }
+    }
 }
 //======= Laptop =======//
 @media (min-width: 992px) {

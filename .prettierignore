@@ -1,3 +1,3 @@
 # This is how your .prettierignore should look
-# src/styles/critical.css
+src/styles/critical.css
 # src/layout/Layout.astro

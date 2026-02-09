@@ -742,6 +742,7 @@
             display: flex;
         }
         &__item {
+            padding: var(--space-md);
             &-content {
                 align-items: center;
                 align-content: center;
@@ -766,6 +767,7 @@
         }
         &-item {
             flex-direction: row-reverse;
+
             &__icon {
                 position: absolute;
                 left: 0;

@@ -677,7 +677,7 @@ const faq = [
                             <button
                                 id={`accordion-button-${index}`}
                                 class="accordion-item__button"
-                                aria-expanded="false"
+                                aria-expanded={index === 0 ? true : false}
                                 aria-controls={`accordion-item__content-${index}`}
                             >
                                 <h3 class="accrodion-item__header">

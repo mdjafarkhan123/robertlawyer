@@ -230,7 +230,7 @@ h4 {
 }
 .btn__icon {
     position: relative;
-    padding: 15px;
+    padding: 10px;
     z-index: 3;
     vertical-align: middle;
     transition: transform 0.3s;
@@ -595,6 +595,9 @@ h4 {
     }
 }
 @media (min-width: 768px) {
+    .btn__icon {
+        padding: 15px;
+    }
     .hero__stats {
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     }

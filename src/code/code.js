@@ -22,7 +22,7 @@ const CONFIG = {
         perPage: 3,
         gap: "2rem",
         arrows: false,
-        pagination: true,
+        pagination: false,
     },
     SPLIDE_CASE: {
         type: "loop",
@@ -255,7 +255,6 @@ function initServiceSlider() {
         ...CONFIG.SPLIDE,
         breakpoints: {
             [CONFIG.BREAKPOINTS.DESKTOP]: { perPage: 2 },
-            640: { perPage: 1 },
         },
     }).mount();
 

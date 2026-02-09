@@ -6,9 +6,9 @@ import Splide from "@splidejs/splide";
 // Configuration
 const CONFIG = {
     BREAKPOINTS: {
-        MOBILE: 768,
-        TABLET: 992,
-        DESKTOP: 1024,
+        MOBILE: 640,
+        MOBILE_LG: 768,
+        TABLET: 991,
     },
     LENIS: {
         wheelMultiplier: 1.6,
@@ -23,6 +23,20 @@ const CONFIG = {
         gap: "2rem",
         arrows: false,
         pagination: true,
+    },
+    SPLIDE_CASE: {
+        type: "loop",
+        perPage: 1,
+        gap: "2rem",
+        arrows: false,
+        pagination: false,
+    },
+    SPLIDE_TESTIMONIALS: {
+        type: "loop",
+        perPage: 1,
+        gap: "2rem",
+        arrows: false,
+        pagination: false,
     },
 };
 
@@ -256,16 +270,38 @@ function initServiceSlider() {
     );
     console.log(splideEl);
 }
+
+//Case study Slider
+function initialCaseSlider() {
+    const splideEl = document.querySelector(".case-study .splide");
+    if (!splideEl) return;
+
+    const splide = new Splide(splideEl, {
+        ...CONFIG.SPLIDE_CASE,
+    }).mount();
+
+    const prevBtns = document.querySelectorAll(".slider-controls__btn--prev");
+    const nextBtns = document.querySelectorAll(".slider-controls__btn--next");
+
+    prevBtns.forEach((btn) =>
+        btn.addEventListener("click", () => splide.go("<")),
+    );
+    nextBtns.forEach((btn) =>
+        btn.addEventListener("click", () => splide.go(">")),
+    );
+    console.log(splideEl);
+}
+
 //Testimonial Slider
 function initTestimonialSlider() {
     const splideEl = document.querySelector(".testimonials .splide");
     if (!splideEl) return;
 
     const splide = new Splide(splideEl, {
-        ...CONFIG.SPLIDE,
+        ...CONFIG.SPLIDE_TESTIMONIALS,
         breakpoints: {
-            [CONFIG.BREAKPOINTS.DESKTOP]: { perPage: 2 },
-            640: { perPage: 1 },
+            [CONFIG.BREAKPOINTS.MOBILE]: { perPage: 1 },
+            [CONFIG.BREAKPOINTS.TABLET]: { perPage: 2 },
         },
     }).mount();
 
@@ -291,6 +327,7 @@ function init() {
     faq();
     initTestimonialSlider();
     initServiceSlider();
+    initialCaseSlider();
 
     // Responsive logic using matchMedia
     mm.add(

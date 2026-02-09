@@ -515,7 +515,7 @@ const faq = [
                     <SliderController />
                 </div>
             </div>
-            <div class="case-study__list">
+            <div class="case-study__list case-study__list--mobile">
                 {
                     caseStudies.map((item) => (
                         <div class="case-study__item">
@@ -549,6 +549,44 @@ const faq = [
                     ))
                 }
             </div>
+            <div class="splide">
+                <div class="splide__track">
+                    <div class="case-study__list splide__list">
+                        {
+                            caseStudies.map((item) => (
+                                <div class="case-study__item splide__slide">
+                                    <div class="case-study__item-header">
+                                        <div class="case-study__item-category glassmorphism-effect">
+                                            {item.category}
+                                        </div>
+                                        <Image
+                                            class="case-study__item-media"
+                                            src={item.thumbnail}
+                                            alt={item.title}
+                                            width={item.thumbnail.width}
+                                        />
+                                    </div>
+                                    <div class="case-study__item-content">
+                                        <div class="case-study__item-date">
+                                            {item.date}
+                                        </div>
+                                        <h3 class="case-study__item-title">
+                                            {item.title}
+                                        </h3>
+                                        <p class="case-study__item-description">
+                                            {item.description}
+                                        </p>
+                                        <Button
+                                            title="Read the full cases"
+                                            type="primary"
+                                        />
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <section id="testimonials" class="testimonials">
@@ -578,6 +616,8 @@ const faq = [
                                             src={item.featuredImg}
                                             alt={item.name}
                                         />
+                                    </div>
+                                    <div class="testimonials-item__content">
                                         <div
                                             class="testimonials-item__icon"
                                             aria-hidden="true"
@@ -588,8 +628,6 @@ const faq = [
                                                 role="presentation"
                                             />
                                         </div>
-                                    </div>
-                                    <div class="testimonials-item__content">
                                         <blockquote class="testimonials-item__feedback">
                                             <p>{item.quote}</p>
                                         </blockquote>

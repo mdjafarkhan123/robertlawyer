@@ -102,6 +102,7 @@ function initMobileMenu() {
 }
 
 function initButtonEffect() {
+    if (window.innerWidth < CONFIG.BREAKPOINTS.TABLET) return;
     const buttons = document.querySelectorAll(".btn");
 
     buttons.forEach((button) => {

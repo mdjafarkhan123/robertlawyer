@@ -5,7 +5,7 @@ export default defineConfig({
     vite: {
         plugins: [yaml()],
         build: {
-            cssCodeSplit: true, // Creates separate CSS files per import
+            cssCodeSplit: true,
         },
         css: {
             preprocessorOptions: {

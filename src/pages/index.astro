@@ -406,11 +406,29 @@ const faq = [
     </section>
     <section id="reason" class="reason">
         <div class="reason__wrapper container">
-            <div class="reason__intro">
-                <div class="badge">Why choose us</div>
-                <h2 class="reason__heading">
-                    Why <span class="colored-text">choose</span> robert
-                </h2>
+            <div class="reason__content">
+                <div class="reason__intro">
+                    <div class="badge">Why choose us</div>
+                    <h2 class="reason__heading">
+                        Why <span class="colored-text">choose</span> robert
+                    </h2>
+                </div>
+                <div class="reason__list">
+                    {
+                        whyChoose.map((item) => (
+                            <div class="reason__item">
+                                <div class="reason__icon">
+                                    <Icon name={item.icon} />
+                                </div>
+                                <h3 class="reason__title">{item.title}</h3>
+                                <div class="divider" />
+                                <p class="reason__description">
+                                    {item.description}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
             <div class="reason__media">
                 <Image
@@ -418,22 +436,16 @@ const faq = [
                     alt="Robert speaking"
                     width={whyChooseOneImg.width}
                 />
-            </div>
-            <div class="reason__list">
-                {
-                    whyChoose.map((item) => (
-                        <div class="reason__item">
-                            <div class="reason__icon">
-                                <Icon name={item.icon} />
-                            </div>
-                            <h3 class="reason__title">{item.title}</h3>
-                            <div class="divider" />
-                            <p class="reason__description">
-                                {item.description}
-                            </p>
-                        </div>
-                    ))
-                }
+                <Image
+                    src={whyChooseTwoImg}
+                    alt="Robert speaking"
+                    width={whyChooseOneImg.width}
+                />
+                <Image
+                    src={whyChooseThreeImg}
+                    alt="Robert speaking"
+                    width={whyChooseOneImg.width}
+                />
             </div>
         </div>
     </section>

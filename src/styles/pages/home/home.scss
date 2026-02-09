@@ -223,9 +223,25 @@
     &__wrapper {
         gap: var(--space-fluid-lg);
     }
+    &__intro {
+        margin-bottom: var(--space-xl);
+    }
     &__media {
+        max-width: 500px;
+        align-self: flex-start;
         border-radius: var(--round-lg);
         overflow: hidden;
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+        img:nth-of-type(n + 2) {
+            display: none;
+            aspect-ratio: 220 / 162;
+        }
+        img:nth-of-type(1) {
+            aspect-ratio: 461/503;
+        }
     }
     &__list {
         display: grid;
@@ -321,6 +337,11 @@
     &__media {
         overflow: hidden;
         border-radius: var(--round-md);
+        max-width: 592px;
+        img {
+            width: 100%;
+            border-radius: var(--round-md);
+        }
     }
 }
 
@@ -600,7 +621,70 @@
             display: flex;
         }
     }
+    .step {
+        &__wrapper {
+            flex-flow: row wrap;
+            justify-content: center;
+
+            gap: var(--space-fluid-lg);
+        }
+        &__intro {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            text-align-last: center;
+        }
+        &__heading {
+            max-width: 550px;
+        }
+        &__list {
+            width: calc(50% - 30px);
+        }
+        &__media {
+            width: calc(50% - 30px);
+            img {
+                aspect-ratio: 236 / 213;
+            }
+        }
+    }
 }
 //======= Laptop =======//
 @media (min-width: 992px) {
+    .reason {
+        &__wrapper {
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__media {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            align-content: start;
+            border-radius: 0;
+            gap: var(--space-sm);
+            img {
+                border-radius: var(--round-md);
+                height: 100%;
+                object-fit: cover;
+            }
+            img:nth-of-type(n + 2) {
+                display: block;
+            }
+            img:nth-of-type(1) {
+                grid-column: 1 / 5;
+                height: auto;
+            }
+            img:nth-of-type(2) {
+                grid-column: 1 / 3;
+                height: auto;
+            }
+            img:nth-of-type(3) {
+                grid-column: 3 / 5;
+                height: auto;
+            }
+        }
+    }
 }

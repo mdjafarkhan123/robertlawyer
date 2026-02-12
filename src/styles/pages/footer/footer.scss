@@ -51,6 +51,11 @@
         -webkit-background-clip: text;
         word-break: break-all;
         white-space: normal;
+        user-select: none;
+        pointer-events: none;
+        img {
+            user-select: none;
+        }
     }
     &-main {
         display: flex;

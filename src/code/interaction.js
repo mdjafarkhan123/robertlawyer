@@ -36,6 +36,4 @@ events.forEach((event) => {
     });
 });
 
-// Fallback: Load automatically after 4 seconds if user doesn't move
-// (Good for SEO bots that don't scroll)
-setTimeout(loadHeavyScripts, 2000);
+setTimeout(loadHeavyScripts, 4000);

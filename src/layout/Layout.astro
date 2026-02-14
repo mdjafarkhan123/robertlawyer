@@ -101,6 +101,8 @@ import criticalCss from "../styles/critical.css?raw";
         </noscript>
 
         <!-- Scripts -->
-        <script src="../code/interaction.js"></script>
+        <script>
+        let loaded=!1;async function loadHeavyScripts(){if(!loaded){loaded=!0,["scroll","mousemove","mousedown","touchstart","keydown"].forEach(e=>window.removeEventListener(e,loadHeavyScripts));try{let e=await import("../code/code.js");e.init&&e.init()}catch(o){console.error("Failed to load scripts:",o)}}}const events=["scroll","mousemove","mousedown","touchstart","keydown"];events.forEach(e=>{window.addEventListener(e,loadHeavyScripts,{once:!0,passive:!0})}),setTimeout(loadHeavyScripts,4e3);
+        </script>
     </body>
 </html>

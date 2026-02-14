@@ -102,7 +102,9 @@ function initMobileMenu() {
 }
 
 function initButtonEffect() {
+    // Optimization: Check condition once at the start
     if (window.innerWidth < CONFIG.BREAKPOINTS.TABLET) return;
+
     const buttons = document.querySelectorAll(".btn");
 
     buttons.forEach((button) => {
@@ -112,18 +114,35 @@ function initButtonEffect() {
         let rect = null;
 
         button.addEventListener("mouseenter", (e) => {
-            rect = button.getBoundingClientRect();
-            bg.style.left = `${e.clientX - rect.left}px`;
-            bg.style.top = `${e.clientY - rect.top}px`;
-            void bg.offsetWidth;
-            bg.style.transition = "transform 0.5s ease-out, opacity 0.3s";
+            rect = button.getBoundingClientRect(); // READ
+
+            // PRO FIX: Use GSAP.set instead of style.left + offsetWidth hack
+            // This prevents the "Forced Reflow" / Layout Thrashing
+            gsap.set(bg, {
+                left: e.clientX - rect.left,
+                top: e.clientY - rect.top,
+                overwrite: true, // Kill any ongoing animations immediately
+            });
+
+            // Now animate normally
+            gsap.to(bg, {
+                duration: 0.5,
+                ease: "power2.out",
+                // Add any other properties you are animating (e.g., scale, opacity)
+            });
+            // Note: If you were using CSS transitions for the hover effect,
+            // you might need to add that logic into this GSAP tween.
         });
 
         button.addEventListener("mouseleave", (e) => {
             if (!rect) return;
-            bg.style.transition = "all 0.5s ease-out";
-            bg.style.left = `${e.clientX - rect.left}px`;
-            bg.style.top = `${e.clientY - rect.top}px`;
+            // Use GSAP for leaving as well for consistency
+            gsap.to(bg, {
+                duration: 0.5,
+                left: e.clientX - rect.left,
+                top: e.clientY - rect.top,
+                ease: "power2.out",
+            });
             rect = null;
         });
 
@@ -318,7 +337,7 @@ function initTestimonialSlider() {
 }
 
 // Main initialization
-function init() {
+export function init() {
     let mm = gsap.matchMedia();
 
     // Universal initializations
@@ -364,5 +383,3 @@ function init() {
         }, 300),
     );
 }
-
-init();

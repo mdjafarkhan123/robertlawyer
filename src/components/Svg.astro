@@ -2,6 +2,11 @@
 const { size = 24, name = "icon", src = "sprite" } = Astro.props;
 ---
 
-<svg class={`icon ${name}`} style="aspect-ratio: 1 / 1;" width={size}>
+<svg
+    class={`icon ${name}`}
+    style="aspect-ratio: 1 / 1;"
+    width={size}
+    data-sprite
+>
     <use xlink:href={`/${src}.svg#${name}`}></use>
 </svg>

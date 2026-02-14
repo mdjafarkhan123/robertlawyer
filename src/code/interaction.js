@@ -21,8 +21,6 @@ async function loadHeavyScripts() {
         if (module.init) {
             module.init();
         }
-
-        console.log("Scripts hydrated on interaction");
     } catch (err) {
         console.error("Failed to load scripts:", err);
     }
@@ -40,4 +38,4 @@ events.forEach((event) => {
 
 // Fallback: Load automatically after 4 seconds if user doesn't move
 // (Good for SEO bots that don't scroll)
-setTimeout(loadHeavyScripts, 4000);
+setTimeout(loadHeavyScripts, 2000);

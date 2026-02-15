@@ -240,8 +240,8 @@ function initSlideUpAnimation() {
     elements.forEach((element) => {
         gsap.from(element, {
             opacity: 0,
-            y: 120,
-            duration: 1,
+            y: 140,
+            duration: 0.8,
             ease: "power2.out",
             scrollTrigger: {
                 trigger: element,

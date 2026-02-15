@@ -25,4 +25,4 @@ events.forEach((event) => {
     });
 });
 
-setTimeout(loadHeavyScripts, 4000);
+setTimeout(loadHeavyScripts, 10000);

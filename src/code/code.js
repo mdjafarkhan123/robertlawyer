@@ -112,7 +112,10 @@ function initButtonEffect() {
         if (!bg) return;
 
         let rect = null;
-
+        gsap.set(bg, {
+            minWidth: "225%",
+            minHeight: "225%",
+        });
         button.addEventListener("mouseenter", (e) => {
             rect = button.getBoundingClientRect(); // READ
 

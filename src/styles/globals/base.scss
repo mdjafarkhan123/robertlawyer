@@ -233,8 +233,7 @@ hr {
 
     &__bg {
         position: absolute;
-        top: 0;
-        left: 0;
+        width: 0;
         aspect-ratio: 1 / 1;
         border-radius: 50%;
         transform: translate(-50%, -50%) scale(0);

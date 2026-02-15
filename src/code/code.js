@@ -113,6 +113,7 @@ function initButtonEffect() {
 
         let rect = null;
         gsap.set(bg, {
+            width: "100%",
             minWidth: "225%",
             minHeight: "225%",
         });

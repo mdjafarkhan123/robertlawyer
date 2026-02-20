@@ -23,6 +23,7 @@ const CONFIG = {
         gap: "2rem",
         arrows: false,
         pagination: false,
+        perMove: 1,
     },
     SPLIDE_CASE: {
         type: "loop",
@@ -30,6 +31,7 @@ const CONFIG = {
         gap: "2rem",
         arrows: false,
         pagination: false,
+        perMove: 1,
     },
     SPLIDE_TESTIMONIALS: {
         type: "loop",
@@ -37,6 +39,7 @@ const CONFIG = {
         gap: "2rem",
         arrows: false,
         pagination: false,
+        perMove: 1,
     },
 };
 
@@ -233,35 +236,18 @@ function initLazyLoad() {
 
 // Slide up animation
 
-function initSlideUpAnimation() {
-    const elements = document.querySelectorAll(".slide-up");
-    if (!elements.length) return;
-
-    elements.forEach((element) => {
-        gsap.from(element, {
-            opacity: 0,
-            y: 140,
-            duration: 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: element,
-                start: "top 85%",
-            },
-        });
-    });
-}
-
 // Accordion
 function faq() {
     const items = document.querySelectorAll(".accordion-item__button");
-    console.log(items);
 
-    function toggleAction(e) {
-        const state = this.getAttribute("aria-expanded");
-        if (state == "false") {
+    function toggleAction() {
+        const isOpen = this.getAttribute("aria-expanded") === "true";
+
+        items.forEach((item) => {
+            item.setAttribute("aria-expanded", "false");
+        });
+        if (!isOpen) {
             this.setAttribute("aria-expanded", "true");
-        } else {
-            this.setAttribute("aria-expanded", "false");
         }
     }
 
@@ -269,7 +255,6 @@ function faq() {
         item.addEventListener("click", toggleAction);
     });
 }
-
 //Service Slider
 function initServiceSlider() {
     const splideEl = document.querySelector(".services .splide");
@@ -365,7 +350,6 @@ export function init() {
 
             if (isDesktop) {
                 initButtonEffect();
-                initSlideUpAnimation();
             }
 
             if (isTablet) {

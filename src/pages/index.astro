@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import Button from "../components/Button.astro";
 import underTheFold from "../styles/pages/home/home.scss?url";
 import splideCssUrl from "@splidejs/splide/css?url";
@@ -25,10 +25,10 @@ import quoteImg from "../assets/images/quote.avif";
 
 import SliderController from "../components/SliderController.astro";
 import Icon from "../components/Svg.astro";
-import { getImage } from "astro:assets";
 
 const optimizedLg = await getImage({ src: robertLg, format: "avif" });
 const optimizedSm = await getImage({ src: robertSm, format: "avif" });
+const optimizedSmFallback = await getImage({ src: robertSm, format: "webp" });
 
 const stats = [
     {
@@ -230,24 +230,26 @@ const faq = [
 ---
 
 <Layout>
-    <section id="hero" class="hero">
+    <section id="hero" class="hero" aria-labelledby="hero-heading">
         <div class="hero__wrapper container">
             <div class="hero__media">
-                <picture class="hero__image">
+                <picture>
                     <source
-                        media="(min-width: 640px)"
+                        media="(min-width: 540px)"
                         srcset={optimizedLg.src}
+                        type="image/avif"
                         width={optimizedLg.attributes.width}
                         height={optimizedLg.attributes.height}
                     />
 
                     <img
+                        class="hero__image"
                         src={optimizedSm.src}
-                        alt="Robert"
+                        alt="Robert Thomas, personal injury solicitor"
                         loading="eager"
                         fetchpriority="high"
-                        width={optimizedSm.attributes.width}
-                        height={optimizedSm.attributes.height}
+                        width={optimizedSmFallback.attributes.width}
+                        height={optimizedSmFallback.attributes.height}
                     />
                 </picture>
             </div>
@@ -256,9 +258,9 @@ const faq = [
                     <span class="icon">
                         <Icon name="auction-fill" src="abovethefold" />
                     </span>
-                    <div class="text">SRA Regulated: 01993456</div>
+                    <span class="text">SRA Regulated: 01993456</span>
                 </div>
-                <h1 class="hero__heading">
+                <h1 class="hero__heading" id="hero-heading">
                     Your trusted partner for Legal solutions
                 </h1>
                 <p class="hero__description">
@@ -267,12 +269,12 @@ const faq = [
                 </p>
                 <Button title="start your case" type="secondary" />
             </div>
-            <div class="hero__stats stats">
+            <ul class="hero__stats stats" role="list" aria-label="Key statics">
                 {
                     stats.map((item) => (
-                        <div class="stats__item">
+                        <li class="stats__item">
                             <div class="stats__header">
-                                <div class="stats__icon">
+                                <div class="stats__icon" aria-hidden="true">
                                     <Icon name={item.icon} src="abovethefold" />
                                 </div>
                                 <div class="stats__value">
@@ -281,10 +283,10 @@ const faq = [
                                 </div>
                             </div>
                             <div class="stats__body">{item.description}</div>
-                        </div>
+                        </li>
                     ))
                 }
-            </div>
+            </ul>
         </div>
     </section>
     <section id="about" class="about">

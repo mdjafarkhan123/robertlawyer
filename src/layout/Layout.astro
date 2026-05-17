@@ -78,36 +78,37 @@ import criticalCss from "../styles/critical.css?raw";
     </head>
     <body>
         <Header />
-        <main <slot></main>
+        <main>
+            <slot />
+        </main>
     </body>
-    <Footer />
-
-    <!-- Deferred Non-Critical CSS -->
-    <link
-        rel="stylesheet"
-        href={baseStyle}
-        media="print"
-        onload="this.media='all'"
-    />
-    <slot name="bottom-style" />
-    <link
-        rel="stylesheet"
-        href={utfFooterCss}
-        media="print"
-        onload="this.media='all'"
-    />
-
-    <!-- Fallback for users with JavaScript disabled -->
-    <noscript>
-        <link rel="stylesheet" href={baseStyle} />
-        <link rel="stylesheet" href={utfFooterCss} />
-    </noscript>
-
-    <!-- Scripts -->
-    <script src="../code/interaction.js"></script>
-    <script
-        src="https://upliftcontractoros.vercel.app/webchat-widget.js"
-        data-widget-token="86055dba-c809-4a2c-93e3-7e22bb60276e"
-        async
-    ></script>
 </html>
+<Footer />
+
+<!-- Deferred Non-Critical CSS -->
+<link
+    rel="stylesheet"
+    href={baseStyle}
+    media="print"
+    onload="this.media='all'"
+/>
+<slot name="bottom-style" />
+<link
+    rel="stylesheet"
+    href={utfFooterCss}
+    media="print"
+    onload="this.media='all'"
+/>
+
+<!-- Fallback for users with JavaScript disabled -->
+<noscript>
+    <link rel="stylesheet" href={baseStyle} />
+    <link rel="stylesheet" href={utfFooterCss} />
+</noscript>
+
+<!-- Scripts -->
+<script src="../code/interaction.js"></script>
+<script
+    src="https://upliftcontractoros.vercel.app/webchat-widget.js"
+    data-widget-token="86055dba-c809-4a2c-93e3-7e22bb60276e"
+    async></script>
